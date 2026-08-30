@@ -53,7 +53,7 @@ app/
 
 | Rôle | Choix |
 |---|---|
-| Build | AGP 9.3.2, Gradle 9.5.0, JDK 17, Kotlin 2.3.21 |
+| Build | AGP 9.3.2 (Kotlin intégré), Gradle 9.5.0, JDK 17 |
 | Génération | KSP 2.3.11 (Room uniquement — pas de Hilt) |
 | UI | Compose BOM 2026.08.00, Material 3, navigation-compose 2.10.0 |
 | Persistance | Room 2.8.4, `exportSchema = true` |

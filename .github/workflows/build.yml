@@ -38,6 +38,10 @@ jobs:
       - name: Tests, lint et APK de release
         run: ./gradlew --no-daemon testDebugUnitTest lintDebug assembleRelease
 
+      - name: Diagnostic — schéma Room généré
+        if: always()
+        run: find app/schemas -type f -print -exec cat {} \; 2>/dev/null || true
+
       - name: Rapport de tests
         if: always()
         uses: actions/upload-artifact@v4

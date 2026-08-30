@@ -4,7 +4,12 @@ Application Android d'inventaire de bibliothèque personnelle par scan de codes-
 
 ## Stack
 
-- Kotlin 2.3.21, Jetpack Compose (BOM 2026.08.00), Material 3 avec couleur dynamique.
+- Kotlin via le **support intégré d'AGP 9** : le plugin `org.jetbrains.kotlin.android`
+  n'est pas appliqué (AGP 9 le refuse), et `jvmTarget` suit
+  `android.compileOptions.targetCompatibility`. Seuls les plugins compilateur externes
+  (`kotlin.plugin.compose`, `kotlin.plugin.serialization`) restent déclarés, à la version
+  du catalogue.
+- Jetpack Compose (BOM 2026.08.00), Material 3 avec couleur dynamique.
 - Module unique `:app`. `minSdk 26`, `compileSdk`/`targetSdk 36`, **JDK 17**.
 - Gradle Kotlin DSL + version catalog (`gradle/libs.versions.toml`), wrapper commité.
 - Room + KSP pour la persistance ; OkHttp + kotlinx.serialization pour le réseau ;
