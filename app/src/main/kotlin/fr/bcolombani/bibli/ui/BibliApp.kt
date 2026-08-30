@@ -27,6 +27,7 @@ import fr.bcolombani.bibli.ui.scan.ScanFeedback
 import fr.bcolombani.bibli.ui.scan.ScanScreen
 import fr.bcolombani.bibli.ui.scan.ScanViewModel
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
 import androidx.lifecycle.viewmodel.compose.viewModel
 
@@ -47,6 +48,9 @@ fun BibliApp(container: AppContainer) {
 
     val context = LocalContext.current
     val feedback = remember { ScanFeedback(context) }
+    DisposableEffect(feedback) {
+        onDispose { feedback.release() }
+    }
 
     Scaffold(
         bottomBar = {

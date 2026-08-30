@@ -4,6 +4,8 @@
 
 [versions]
 agp = "9.3.2"
+# Version des plugins compilateur Kotlin externes (Compose, serialization).
+# Le compilateur Kotlin lui-même est celui embarqué dans AGP depuis AGP 9.
 kotlin = "2.3.21"
 ksp = "2.3.11"
 
@@ -66,7 +68,6 @@ kxml2 = { group = "net.sf.kxml", name = "kxml2", version.ref = "kxml2" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

@@ -177,11 +177,6 @@ class ScanViewModel(
         _state.update { it.copy(torchAvailable = available) }
     }
 
-    override fun onCleared() {
-        feedback.release()
-        super.onCleared()
-    }
-
     companion object {
         const val DEBOUNCE_MS = 3_000L
         const val OVERLAY_MS = 800L

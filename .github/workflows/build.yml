@@ -30,6 +30,11 @@ jobs:
         with:
           cache-read-only: ${{ github.ref != 'refs/heads/main' }}
 
+      - name: Diagnostic — Kotlin embarqué dans AGP
+        run: |
+          curl -sS "https://dl.google.com/dl/android/maven2/com/android/tools/build/gradle/9.3.2/gradle-9.3.2.pom" \
+            | grep -iE -A2 'kotlin' | head -60 || true
+
       - name: Tests, lint et APK de release
         run: ./gradlew --no-daemon testDebugUnitTest lintDebug assembleRelease
 

@@ -1,9 +1,7 @@
 import java.util.Base64
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
@@ -31,16 +29,16 @@ val buildVersionName: String = providers.environmentVariable("GITHUB_REF_NAME").
  * Absent → on retombe sur la clé de debug, pour qu'`assembleRelease` produise
  * un APK **installable** dès le premier run, sans rien configurer.
  */
-val keystoreBase64: String? = providers.environmentVariable("KEYSTORE_BASE64").orNull
+val envKeystoreBase64: String? = providers.environmentVariable("KEYSTORE_BASE64").orNull
     ?.takeIf { it.isNotBlank() }
-val keystorePassword: String? = providers.environmentVariable("KEYSTORE_PASSWORD").orNull
-val keyAlias: String? = providers.environmentVariable("KEY_ALIAS").orNull
-val keyPassword: String? = providers.environmentVariable("KEY_PASSWORD").orNull
+val envKeystorePassword: String? = providers.environmentVariable("KEYSTORE_PASSWORD").orNull
+val envKeyAlias: String? = providers.environmentVariable("KEY_ALIAS").orNull
+val envKeyPassword: String? = providers.environmentVariable("KEY_PASSWORD").orNull
 
-val hasReleaseKeystore = keystoreBase64 != null &&
-    !keystorePassword.isNullOrBlank() &&
-    !keyAlias.isNullOrBlank() &&
-    !keyPassword.isNullOrBlank()
+val hasReleaseKeystore = envKeystoreBase64 != null &&
+    !envKeystorePassword.isNullOrBlank() &&
+    !envKeyAlias.isNullOrBlank() &&
+    !envKeyPassword.isNullOrBlank()
 
 android {
     namespace = "fr.bcolombani.bibli"
@@ -59,11 +57,11 @@ android {
             create("release") {
                 val keystoreFile = layout.buildDirectory.file("keystore/release.jks").get().asFile
                 keystoreFile.parentFile.mkdirs()
-                keystoreFile.writeBytes(Base64.getDecoder().decode(keystoreBase64!!.trim()))
+                keystoreFile.writeBytes(Base64.getDecoder().decode(envKeystoreBase64!!.trim()))
                 storeFile = keystoreFile
-                storePassword = keystorePassword
-                this.keyAlias = keyAlias
-                this.keyPassword = keyPassword
+                storePassword = envKeystorePassword
+                keyAlias = envKeyAlias
+                keyPassword = envKeyPassword
             }
         }
     }
@@ -88,6 +86,7 @@ android {
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
+        // Le `jvmTarget` du Kotlin intégré à AGP suit `targetCompatibility`.
         targetCompatibility = JavaVersion.VERSION_17
     }
 
@@ -119,12 +118,6 @@ android {
                 "/META-INF/NOTICE*",
             )
         }
-    }
-}
-
-kotlin {
-    compilerOptions {
-        jvmTarget = JvmTarget.JVM_17
     }
 }
 
