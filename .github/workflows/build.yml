@@ -30,17 +30,25 @@ jobs:
         with:
           cache-read-only: ${{ github.ref != 'refs/heads/main' }}
 
-      - name: Diagnostic — Kotlin embarqué dans AGP
+      - name: Plateforme Android 37
         run: |
-          curl -sS "https://dl.google.com/dl/android/maven2/com/android/tools/build/gradle/9.3.2/gradle-9.3.2.pom" \
-            | grep -iE -A2 'kotlin' | head -60 || true
+          yes 2>/dev/null | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" \
+            "platforms;android-37" >/dev/null 2>&1 || true
 
       - name: Tests, lint et APK de release
         run: ./gradlew --no-daemon testDebugUnitTest lintDebug assembleRelease
 
-      - name: Diagnostic — schéma Room généré
-        if: always()
-        run: find app/schemas -type f -print -exec cat {} \; 2>/dev/null || true
+      # Le schéma Room commité doit décrire la base réellement générée, sinon la
+      # première migration serait écrite contre un schéma faux. Comparaison sur le
+      # JSON analysé, donc insensible au formatage.
+      - name: Le schéma Room commité est à jour
+        run: |
+          for schema in app/schemas/*/*.json; do
+            git show "HEAD:$schema" | python3 -m json.tool --sort-keys > /tmp/committed.json
+            python3 -m json.tool --sort-keys < "$schema" > /tmp/generated.json
+            diff -u /tmp/committed.json /tmp/generated.json \
+              || { echo "::error::$schema est périmé : relancer le build et le commiter"; exit 1; }
+          done
 
       - name: Rapport de tests
         if: always()

@@ -135,6 +135,12 @@ Release GitHub.
 
 ## Écarts à la spec
 
+- **`compileSdk = 37`, `targetSdk = 36`.** La spec demandait 36 pour les deux, mais
+  Compose 1.12, `androidx.core` 1.19 et `okhttp-android` 5.5 refusent d'être compilés
+  contre l'API 36 (leur `aar-metadata` exige 37). Plutôt que de rétrograder une dizaine
+  de dépendances vers des versions plus anciennes — ce que la spec demandait justement
+  d'éviter — seul `compileSdk` monte à 37. `targetSdk` reste à 36 : c'est lui qui décide
+  du comportement d'exécution de l'application, et c'était le sens de la consigne.
 - **R8 / minification désactivés** en v1 (`isMinifyEnabled = false`), comme demandé.
   Les règles ProGuard nécessaires à ML Kit, Room et kotlinx.serialization sont déjà
   écrites dans `app/proguard-rules.pro` pour le jour où on les réactivera.

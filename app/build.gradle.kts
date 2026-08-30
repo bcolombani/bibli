@@ -42,7 +42,11 @@ val hasReleaseKeystore = envKeystoreBase64 != null &&
 
 android {
     namespace = "fr.bcolombani.bibli"
-    compileSdk = 36
+
+    // Compose 1.12, androidx.core 1.19 et okhttp-android 5.5 exigent une compilation
+    // contre l'API 37 (leur `aar-metadata`). `targetSdk` reste 36 : c'est lui qui décide
+    // du comportement d'exécution, et rien dans l'application ne demande l'API 37.
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "fr.bcolombani.bibli"

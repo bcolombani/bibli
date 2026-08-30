@@ -10,7 +10,9 @@ Application Android d'inventaire de bibliothèque personnelle par scan de codes-
   (`kotlin.plugin.compose`, `kotlin.plugin.serialization`) restent déclarés, à la version
   du catalogue.
 - Jetpack Compose (BOM 2026.08.00), Material 3 avec couleur dynamique.
-- Module unique `:app`. `minSdk 26`, `compileSdk`/`targetSdk 36`, **JDK 17**.
+- Module unique `:app`. `minSdk 26`, `compileSdk 37`, `targetSdk 36`, **JDK 17**.
+  (`compileSdk` est à 37 parce que Compose 1.12 et `androidx.core` 1.19 l'exigent ;
+  voir « Écarts à la spec » dans le README.)
 - Gradle Kotlin DSL + version catalog (`gradle/libs.versions.toml`), wrapper commité.
 - Room + KSP pour la persistance ; OkHttp + kotlinx.serialization pour le réseau ;
   `XmlPullParser` pour le XML de la BnF.
@@ -59,7 +61,8 @@ des tests unitaires ne contenant que des stubs.
 
 ## Base de données
 
-`exportSchema = true`, schémas commités dans `app/schemas/`. Toute évolution de
+`exportSchema = true`, schémas commités dans `app/schemas/` — la CI échoue si le schéma
+commité ne correspond plus à la base générée. Toute évolution de
 `BookEntity` impose de monter `version` et d'écrire une `Migration` : ne jamais
 recourir à `fallbackToDestructiveMigration`, la bibliothèque de l'utilisateur est
 la seule copie de son inventaire.
