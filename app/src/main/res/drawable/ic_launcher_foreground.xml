@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Un livre ouvert traversé d'une ligne de code-barres. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M30,36 L52,40 L52,74 L30,70 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M78,36 L56,40 L56,74 L78,70 Z" />
+    <path
+        android:fillColor="#3F6B4B"
+        android:pathData="M35,46 L37,46 L37,64 L35,64 Z" />
+    <path
+        android:fillColor="#3F6B4B"
+        android:pathData="M40,47 L41,47 L41,65 L40,65 Z" />
+    <path
+        android:fillColor="#3F6B4B"
+        android:pathData="M44,48 L46,48 L46,66 L44,66 Z" />
+    <path
+        android:fillColor="#3F6B4B"
+        android:pathData="M66,48 L68,48 L68,66 L66,66 Z" />
+    <path
+        android:fillColor="#3F6B4B"
+        android:pathData="M71,47 L72,47 L72,65 L71,65 Z" />
+</vector>

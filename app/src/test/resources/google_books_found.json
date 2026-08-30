@@ -1,0 +1,22 @@
+{
+  "kind": "books#volumes",
+  "totalItems": 1,
+  "items": [
+    {
+      "kind": "books#volume",
+      "id": "abcd1234",
+      "volumeInfo": {
+        "title": "L'Étranger",
+        "subtitle": "roman",
+        "authors": ["Albert Camus"],
+        "publisher": "Gallimard",
+        "publishedDate": "1942",
+        "industryIdentifiers": [
+          { "type": "ISBN_13", "identifier": "9782070360024" }
+        ],
+        "pageCount": 186
+      },
+      "saleInfo": { "country": "FR" }
+    }
+  ]
+}

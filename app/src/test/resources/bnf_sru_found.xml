@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<srw:searchRetrieveResponse xmlns:srw="http://www.loc.gov/zing/srw/">
+  <srw:version>1.2</srw:version>
+  <srw:numberOfRecords>1</srw:numberOfRecords>
+  <srw:records>
+    <srw:record>
+      <srw:recordSchema>dublincore</srw:recordSchema>
+      <srw:recordPacking>xml</srw:recordPacking>
+      <srw:recordData>
+        <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
+                   xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <dc:title>Le Grand Meaulnes</dc:title>
+          <dc:creator>Alain-Fournier (1886-1914)</dc:creator>
+          <dc:creator>Daniel Leuwers</dc:creator>
+          <dc:publisher>Gallimard</dc:publisher>
+          <dc:date>1971</dc:date>
+          <dc:language>fre</dc:language>
+        </oai_dc:dc>
+      </srw:recordData>
+      <srw:recordPosition>1</srw:recordPosition>
+    </srw:record>
+  </srw:records>
+</srw:searchRetrieveResponse>

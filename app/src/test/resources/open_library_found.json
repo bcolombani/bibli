@@ -1,0 +1,13 @@
+{
+  "ISBN:9782070360024": {
+    "url": "https://openlibrary.org/books/OL123M/L_Etranger",
+    "key": "/books/OL123M",
+    "title": "L'Étranger",
+    "authors": [
+      { "url": "https://openlibrary.org/authors/OL1A/Albert_Camus", "name": "Albert Camus" },
+      { "url": "https://openlibrary.org/authors/OL2A/X", "name": "Jean Grenier" }
+    ],
+    "number_of_pages": 186,
+    "publishers": [ { "name": "Gallimard" } ]
+  }
+}
