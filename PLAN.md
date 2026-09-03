@@ -69,4 +69,4 @@ app/
 5. UI de scan : caméra, analyse, 4 issues, anti-rebond, saisie manuelle. ✅
 6. UI liste : recherche/tri, édition, suppression annulable, export SAF. ✅
 7. Workflows CI/CD + documentation. ✅
-8. Itérations sur la CI jusqu'au vert, puis tag `v0.1.0`.
+8. Itérations sur la CI jusqu'au vert, puis tag `v0.1.0`. ✅

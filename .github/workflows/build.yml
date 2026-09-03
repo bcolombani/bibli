@@ -2,8 +2,7 @@ name: build
 
 on:
   push:
-    # `claude/**` : branche de développement de cette itération, retirée à la fin.
-    branches: [main, 'claude/**']
+    branches: [main]
   pull_request:
     branches: [main]
   workflow_dispatch:
