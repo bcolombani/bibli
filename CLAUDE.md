@@ -36,6 +36,9 @@ Seule exception assumée dans `core/` : `BnfSruSource` manipule l'interface
 pour que les tests puissent fournir une implémentation réelle (kXML 2), le `android.jar`
 des tests unitaires ne contenant que des stubs.
 
+Le parcours fonctionnel d'un scan est documenté dans `docs/processus-scan.md` : à tenir
+à jour quand le comportement change.
+
 ## Où changer quoi
 
 | Besoin | Endroit |

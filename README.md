@@ -24,6 +24,9 @@ les codes-barres ISBN des livres, **en chaîne**, sans toucher l'écran entre de
 | Code-barres lu mais pas un ISBN | bip d'erreur, **croix rouge** | rien n'est enregistré, retour au scan immédiat |
 | ISBN déjà présent en base | double bip court, **coche bleue** | pas de doublon, retour au scan immédiat |
 
+Le détail complet du parcours d'un livre, du code-barres à la fiche, est décrit dans
+[`docs/processus-scan.md`](docs/processus-scan.md) (avec un schéma).
+
 L'icône est **toujours affichée** : elle est le canal principal, le son n'est qu'un bonus.
 Un même code relu dans les 3 secondes est ignoré, et la caméra cesse d'analyser tant que
 la feuille de saisie manuelle est ouverte.
